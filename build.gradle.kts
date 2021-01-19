@@ -4,7 +4,7 @@ ext {
     set("userOrg", "974577817")
     set("repoName", "release")
     set("groupId", "son.ysy.key.creator")
-    set("publishVersion", "1.0.2")
+    set("publishVersion", "1.0.3")
     set("website", "https://github.com/qiushui95/KeysCreator")
 }
 
@@ -17,7 +17,7 @@ buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:4.1.1")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.21")
-        classpath("com.github.qiushui95:AndroidDependencies:1.0.6")
+        classpath("com.github.qiushui95:AndroidDependencies:1.0.8")
         classpath("com.novoda:bintray-release:0.9.2")
 
         // NOTE: Do not place your application dependencies here; they belong

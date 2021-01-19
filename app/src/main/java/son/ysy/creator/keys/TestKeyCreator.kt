@@ -2,7 +2,7 @@ package son.ysy.creator.keys
 
 import son.ysy.creator.annotations.KeyCreator
 
-@KeyCreator(keys = ["key1", "key2"])
+@KeyCreator("key1", "key2",name = "Configs")
 class TestKeyCreator {
 
     @KeyCreator(keys = ["key2"])
@@ -11,6 +11,6 @@ class TestKeyCreator {
     }
 
     init {
-        val key1 = TestKeyCreatorKeys.key1
+//        val key1 = TestKeyCreatorKeys.key1
     }
 }
