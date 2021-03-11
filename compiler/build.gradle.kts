@@ -7,7 +7,7 @@ plugins {
     id("com.github.dcendents.android-maven")
 }
 
-group = extra["groupId"].toString()
+group = rootProject.extra["groupId"].toString()
 setProperty("archivesBaseName", "compiler")
 
 

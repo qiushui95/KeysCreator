@@ -1,8 +1,9 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+
 ext {
-    set("groupId", "son.ysy.key.creator")
-    set("publishVersion", "1.0.4")
+    val groupId by extra("son.ysy.key.creator")
+    val publishVersion by extra("1.0.4")
 }
 
 buildscript {
