@@ -1,4 +1,4 @@
-# KeyCreator(Key生成器)![Bintray](https://img.shields.io/bintray/v/974577817/release/annotations?label=version)
+# KeyCreator(Key生成器)[![](https://jitpack.io/v/qiushui95/KeysCreator.svg)](https://jitpack.io/#qiushui95/KeysCreator)
 
 解放双手,去除烦恼，不在为key相同造成的bug烦恼。
 
