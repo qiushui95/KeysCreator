@@ -60,72 +60,6 @@ class KeyCreatorPlugin : AbstractProcessor() {
                     .filterNot { it.isBlank() }
 
                 KeyConfig(pkg, keyCreator.name, parentClassList, keyCreator.keys.toList())
-//
-//                val className = if (parentClassList.size == 1) {
-//                    "$pkg.${parentClassList.first()}"
-//                } else {
-//                    "$pkg.${parentClassList.first()}${
-//                        parentClassList.subList(1, parentClassList.size)
-//                            .joinToString("$", prefix = "$")
-//                    }"
-//                }
-//                keyCreator.keys.toList().run {
-//
-//                    if (any { it.isBlank() }) {
-//                        messager.printMessage(
-//                            Diagnostic.Kind.ERROR, "has blank key in class[$className]", element
-//                        )
-//                    }
-//
-//                    val repeatKeyList = asSequence().groupBy { it }
-//                        .filter { it.value.size > 1 }
-//                        .map { it.key }
-//                    if (repeatKeyList.isNotEmpty()) {
-//                        messager.printMessage(
-//                            Diagnostic.Kind.ERROR, repeatKeyList.joinToString(
-//                                ",",
-//                                prefix = "keys:[",
-//                                postfix = "] in class[$className] has more than two!"
-//                            ), element
-//                        )
-//                    }
-//
-//                    val containsEmptyKeys = asSequence().filter {
-//                        it.contains(" ", true)
-//                    }.toList()
-//
-//                    if (containsEmptyKeys.isNotEmpty()) {
-//                        messager.printMessage(
-//                            Diagnostic.Kind.ERROR, containsEmptyKeys.joinToString(
-//                                ",",
-//                                prefix = "keys:[",
-//                                postfix = "] in class[$className] contains empty!Keys must start with letter ,and keys can just include letter,number and _."
-//                            ), element
-//                        )
-//                    }
-//                    val incorrectKeys = asSequence().filterNot {
-//                        it.matches(Regex("^[A-z][\\w]*\$"))
-//                    }.toList()
-//
-//                    if (incorrectKeys.isNotEmpty()) {
-//                        messager.printMessage(
-//                            Diagnostic.Kind.ERROR, incorrectKeys.joinToString(
-//                                ",",
-//                                prefix = "keys:[",
-//                                postfix = "] in class $className incorrect!Keys must start with letter ,and keys can just include letter,number and _."
-//                            ), element
-//                        )
-//                    }
-//                    if (keyCreator.name.isNotBlank() && keyCreator.name.matches(Regex("^[A-Z][A-z0-9_]*\$"))) {
-//                        messager.printMessage(
-//                            Diagnostic.Kind.ERROR,
-//                            "KeyCreator.name must start with uppercase letter",
-//                            element
-//                        )
-//                    }
-//                    val clzName = keyCreator.name.ifBlank { parentClassList.first() + "Keys" }
-//                    KeyConfigs(pkg, clzName, this, parentClassList)
-//                }
             }
             .apply(keyConfigs::addAll)
     }
@@ -189,6 +123,7 @@ class KeyCreatorPlugin : AbstractProcessor() {
 
     private fun createObjectClass(keyConfig: KeyConfig): TypeSpec {
         return TypeSpec.objectBuilder(keyConfig.clzName)
+            .addModifiers(KModifier.INTERNAL)
             .addProperties(createProperties(keyConfig))
             .build()
     }
